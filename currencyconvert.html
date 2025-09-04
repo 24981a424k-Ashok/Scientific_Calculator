@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center; 
+      align-items: center;     
+      background: #111;       
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      text-align: center;
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,255,247,0.2);
+    }
+    input, select, button {
+      margin: 5px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      cursor: pointer;
+      background: #4CAF50;
+      color: white;
+    }
+    button:hover {
+      background: #45a049;
+    }
+ select{
+    direction:1fr;
+    overflow-y:auto;
+ }
+ select option{
+    padding:15px;
+    background-color: white;
+ }
+ select option:hover{
+      background:rgba(0,255,247,0.2);
+ }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Currency Converter</h2>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <br>
+    <select id="from">
+      <option value="USD">USD</option>
+    <option value="INR">INR</option>
+    <option value="EUR">EUR</option>
+    <option value="JPY">JPY</option>
+    <option value="AUD">AUD</option>
+    <option value="CAD">CAD</option>
+    <option value="CHF">CHF</option>
+    <option value="CNY">CNY</option>
+    <option value="HKD">HKD</option>
+    <option value="NZD">NZD</option>
+    <option value="SGD">SGD</option>
+    <option value="AED">AED</option>
+    <option value="SAR">SAR</option>
+    <option value="ZAR">ZAR</option>
+    <option value="PKR">PKR</option>
+    <option value="BRL">BRL</option>
+    <option value="RUB">RUB</option>
+    <option value="KRW">KRW</option>
+    <option value="BDT">BDT</option>
+    </select>
+    to
+    <select id="to">
+     <option value="USD">USD</option>
+    <option value="INR">INR</option>
+    <option value="EUR">EUR</option>
+    <option value="JPY">JPY</option>
+    <option value="AUD">AUD</option>
+    <option value="CAD">CAD</option>
+    <option value="CHF">CHF</option>
+    <option value="CNY">CNY</option>
+    <option value="HKD">HKD</option>
+    <option value="NZD">NZD</option>
+    <option value="SGD">SGD</option>
+    <option value="AED">AED</option>
+    <option value="SAR">SAR</option>
+    <option value="ZAR">ZAR</option>
+    <option value="PKR">PKR</option>
+    <option value="BRL">BRL</option>
+    <option value="RUB">RUB</option>
+    <option value="KRW">KRW</option>
+    <option value="BDT">BDT</option>
+    </select>
+    <br>
+    <button onclick="convert()">Convert</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const rates = {  
+      USD: 1,         // US Dollar
+      INR: 83,        // Indian Rupee
+      EUR: 0.92,      // Euro
+      GBP: 0.78,      // British Pound
+      JPY: 146,       // Japanese Yen
+      AUD: 1.52,      // Australian Dollar
+      CAD: 1.36,      // Canadian Dollar
+      CHF: 0.88,      // Swiss Franc
+      CNY: 7.2,       // Chinese Yuan
+      HKD: 7.8,       // Hong Kong Dollar
+      NZD: 1.65,      // New Zealand Dollar
+      SGD: 1.35,      // Singapore Dollar
+      AED: 3.67,      // UAE Dirham
+      SAR: 3.75,      // Saudi Riyal
+      ZAR: 18.5,      // South African Rand
+      BRL: 5.2,       // Brazilian Real
+      RUB: 91,        // Russian Ruble
+      KRW: 1340,      // South Korean Won
+      PKR: 278,       // Pakistani Rupee
+      BDT: 117        // Bangladeshi Taka
+};
+
+
+    function convert() {
+      let amount = document.getElementById("amount").value;
+      let from = document.getElementById("from").value;
+      let to = document.getElementById("to").value;
+
+      let usdAmount = amount / rates[from];
+      let finalAmount = usdAmount * rates[to];
+
+      document.getElementById("result").innerText =
+        `${amount} ${from} = ${finalAmount.toFixed(2)} ${to}`;
+    }
+  </script>
+</body>
+</html>
